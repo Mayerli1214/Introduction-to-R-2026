@@ -1,0 +1,26 @@
+---
+title: "Personal Webpage"
+author: "Mayerli Mercado"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+<center>
+<img src="IMG_8334.jpeg" width="340" height="440"/>
+</center>
+
+# Hey this is my first Rmd.
+## About me 
+
+* Mi nombre es __Mayerli__<br>
+* Estoy en mi primer año de maestría 
+
+## R Chunk
+```{r echo=T, warning=F}
+library(ggplot2)
+```
+
+
+

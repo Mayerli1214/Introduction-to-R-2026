@@ -1,0 +1,11 @@
+---
+title: "Index"
+author: "Mayerli Mercado"
+date: "2026-09-01"
+output: html_document
+---
+
+```{r}
+
+```
+
