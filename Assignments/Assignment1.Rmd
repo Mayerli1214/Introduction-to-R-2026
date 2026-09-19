@@ -4,5 +4,80 @@ author: "Mayerli Mercado"
 date: "`r format(Sys.time(), '%y-%b-%d, %I:%M %p')`"
 ---
 
-# Hola 
+## __R Tutorial__
 
+#### __Assigning values__ 
+__Q1.__
+```{r} 
+height <- 175 
+height
+```
+
+#### __Simple math__
+__Q2.__
+```{r}
+25 * 4 - 10 
+```
+
+#### __Using functions__ 
+__Q3.__
+```{r}
+sqrt(81)
+```
+
+#### __Character objects__
+__Q4.__
+```{r}
+message <-  "R is fun!" 
+message
+```
+
+#### __Object manipulation__ 
+__Q5.__
+```{r}
+a <- 10
+b <- 5
+c <- a + b
+c
+```
+
+#### __Logical comparison__
+__Q6.__
+```{r}
+15 > 20 
+```
+
+#### __Checking classes__
+__Q7.__
+```{r} 
+class ("Hello world")
+```
+
+#### __Code chunk options__
+__Q8.__<br>
+code chunk without changes<br>
+```{r} 
+log(-1)
+```
+code chunk modified to hide warning<br>
+```{r, warning=FALSE}
+log(-1)
+```
+__Q9.__<br>
+code chunk without changes<br>
+```{r}
+library(dplyr)
+```
+code chunk modified to hide the message<br>
+```{r, message=FALSE}
+library(dplyr)
+```
+
+#### __Creating and analyzing a vector__
+__Q10.__
+```{r}
+grades <- c(80,90,75,95,85)
+mean(grades)
+average <- mean(grades)
+average
+```
