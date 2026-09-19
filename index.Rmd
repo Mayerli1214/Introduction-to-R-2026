@@ -17,10 +17,5 @@ output:
 * Mi nombre es __Mayerli__<br>
 * Estoy en mi primer año de maestría 
 
-## R Chunk
-```{r echo=T, warning=F}
-library(ggplot2)
-```
 
-
-### [assignment1](Assignments/Assignment1.html)
+### [Assignment1](Assignments/Assignment1.html)
