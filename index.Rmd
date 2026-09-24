@@ -19,3 +19,4 @@ output:
 
 
 ### [Assignment1](Assignments/Assignment1.html)
+### [Assignment2](Assignments/Assignment2.html)
