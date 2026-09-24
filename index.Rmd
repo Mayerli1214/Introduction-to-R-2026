@@ -11,12 +11,13 @@ output:
 <img src="IMG_8334.jpeg" width="340" height="440"/>
 </center>
 
-# Hey this is my first Rmd.
-## About me 
+
+# __About me__
 
 * Mi nombre es __Mayerli__<br>
 * Estoy en mi primer año de maestría 
 
 
+# __R Tutorials__
 ### [Assignment1](Assignments/Assignment1.html)
 ### [Assignment2](Assignments/Assignment2.html)
