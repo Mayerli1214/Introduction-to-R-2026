@@ -5,3 +5,79 @@ date: "`r format(Sys.time(), '%y-%b-%d, %I:%M %p')`"
 ---
 
 ## __R Tutorial 2__
+```{r, message=FALSE}
+library(dplyr)
+library(gapminder)
+```
+
+__Q1.__ What class is the gapminder dataset?
+```{r}
+class(gapminder)
+```
+
+__Q2.__ Filter a section of gapminder with a life expectancy smaller than 29.
+```{r}
+gapminder |> 
+  filter(lifeExp < 29)
+```
+
+__Q3.__ Filter the data for the country __Rwanda__ and for years greater than 1979.
+```{r}
+gapminder |> 
+  filter(country == "Rwanda",
+         year > 1979)
+```
+
+
+__Q4.__ Create a new dataset from __gapminder__ excluding the column __gdpPercap.__
+```{r}
+excluding <- gapminder |> 
+  select(!(gdpPercap))
+excluding
+```
+
+__Q5.__ Arrange the dataset in ascending order of lifeExp.
+```{r}
+ascending <- gapminder |> 
+  arrange(lifeExp)
+ascending
+```
+
+__Q6.__ Arrange the dataset in descending order of lifeExp.
+```{r}
+descending <- gapminder |> 
+  arrange(desc(lifeExp))
+descending
+```
+
+__Q7.__ Create a new dataset with only the columns year and lifeExp.
+```{r}
+newgapminder <- gapminder |> 
+  select(year,
+         lifeExp)
+newgapminder
+```
+
+__Q8.__ Filter the dataset for the country Cambodia and show only the columns year and lifeExp.
+```{r}
+Cambodia <- gapminder |> 
+  filter(country == "Cambodia") |> 
+  select(year, lifeExp)
+Cambodia
+```
+
+__Q9.__ Select only the countries in Africa.
+```{r}
+Africa <- gapminder |> 
+  filter(continent == "Africa") |> 
+  select(country)
+Africa
+```
+
+__Q10.__ Create a new column called lifeExp_months that shows life expectancy in months.
+```{r}
+lifeExp_months <- gapminder |> 
+  mutate(lifeExp_months = lifeExp * 12)
+lifeExp_months |> 
+  select(lifeExp_months, lifeExp, everything())
+```
