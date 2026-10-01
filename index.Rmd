@@ -21,3 +21,4 @@ output:
 # __R Tutorials__
 ### [Assignment1](Assignments/Assignment1.html)
 ### [Assignment2](Assignments/Assignment2.html)
+### [Assignment3](Assignments/Assignment3.html)
