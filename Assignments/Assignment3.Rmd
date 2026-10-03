@@ -5,3 +5,76 @@ date: "`r format(Sys.time(), '%y-%b-%d, %I:%M %p')`"
 ---
 
 ## __R Tutorial 3__
+```{r, message=FALSE}
+library(ggplot2)
+data("trees")
+head(trees)
+```
+
+__Q1.__ Create a histogram showing the distribution of Girth.
+```{r, message=FALSE}
+color = c("orange")
+ggplot(trees, aes(Girth)) + 
+  geom_histogram(fill = color) +
+  labs(title = "Distribution of Girth") + 
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+)
+```
+
+__Q2.__ Create a histogram showing the distribution of Volume.
+```{r, message=FALSE}
+color = c("lightblue")
+ggplot(trees, aes(Volume)) + 
+  geom_histogram(fill = color) +
+  labs(title = "Distribution of Volume") + 
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+)
+```
+__Q3.__ Create a scatterplot showing the relationship between Girth and Volume.
+```{r, message=FALSE}
+ggplot(trees, aes(Girth, Volume)) + 
+  geom_point() +
+  labs(title = "Relationship between Girth and Volume") + 
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+)
+```
+
+__Q4.__ Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.
+```{r, warning=FALSE}
+tv <- aov(Volume ~ Volume, data = trees)
+summary(tv)
+```
+```{r}
+resid_anova <- residuals(tv)
+shapiro.test(resid_anova)
+```
+The p-value (p=0.003579) is less than 0.05, the null hypothesis is rejected and it is determined that the data is not normally distributed.<br>
+
+__Q5.__ Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.
+```{r, warning=FALSE}
+tg <- aov(Girth ~ Girth, data = trees)
+summary(tg)
+```
+```{r}
+resid_anova <- residuals(tg)
+shapiro.test(resid_anova)
+```
+The p-value (p=0.08893) is greater than 0.05, the null hypothesis is not rejected and it is determined that the data is normally distributed.<br>
