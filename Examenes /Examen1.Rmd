@@ -1,5 +1,7 @@
 ---
-title: "Exam1"
+title: "Examen1"
 author: "Mayerli Mercado"
 date: "`r format(Sys.time(), '%y-%b-%d, %I:%M %p')`"
 ---
+
+## __Examen 1__
