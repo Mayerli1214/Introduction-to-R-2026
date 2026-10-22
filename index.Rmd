@@ -24,5 +24,5 @@ output:
 ### [Assignment3](Assignments/Assignment3.html)
 
 # __Examenes__
-### [Examen1](Examenes/Examen1.html)
+### [Examen1](Assignments/Exmen1.html)
 
