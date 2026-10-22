@@ -2,5 +2,71 @@
 title: "Examen1"
 author: "Mayerli Mercado"
 date: "`r format(Sys.time(), '%y-%b-%d, %I:%M %p')`"
-
 ---
+
+## __Examen 1__
+```{r, message=FALSE}
+library(tidyverse)
+library(dplyr)
+# install.packages("aod")
+library(aod)
+```
+
+```{r, echo=TRUE, results='hide', message=FALSE}
+msleep <- glimpse(msleep)
+storms <- storms
+lizards <- lizards
+```
+```{r}
+head(msleep)
+```
+
+```{r}
+head(storms)
+```
+```{r}
+head(lizards)
+```
+
+## Mammals Sleep data 
+__Q1.__ Use filter() to subset msleep to only animals who are awake for at least 12 hours of the day.
+```{r}
+Awake <- msleep |> 
+ filter(awake >= 12) |> 
+  arrange(awake)
+Awake
+```
+__Q2.__ Use mutate() to create a new column called percent_day_awake that gives the percentage of the day that each species spends awake. Use select() with everything() at the end to verify your calculation.
+```{r}
+day_awake <- msleep |> 
+  mutate(percent_day_awake = awake / 24 * 100) |> 
+  select(name, percent_day_awake, everything())
+day_awake
+```
+## Storm tracks data
+__Q3.__ Use group_by() and summarise() to calculate the number of storms per year.
+```{r}
+storms_per_year<- storms |> 
+  group_by(year) |> 
+  summarise(num_storms = n())
+storms_per_year
+```
+
+__Q4.__ Use filter() to subset storms to only storms with wind speeds greater than 50 knots, then use arrange() to sort by wind descending.
+```{r}
+storms_speed <- storms |> 
+  filter(wind > 50) |> 
+  arrange(desc(wind)) |> 
+  select(name, wind, everything())
+storms_speed
+```
+## A Comparison of Site Preferences of Two Species of Lizard
+__Q5.__ Determine which Site and Diameter combination has the highest total grahami.
+```{r, message=FALSE}
+Grahami <- lizards |> 
+  group_by(Site, Diameter) |> 
+  summarise(new_grahami = sum(grahami)) |> 
+  arrange(desc(new_grahami))
+Grahami
+```
+
