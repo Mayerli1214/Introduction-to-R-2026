@@ -5,3 +5,55 @@ date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
 ---
 
 ## __R Tutorial 4__
+```{r, message=FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(BSDA)
+library(lsr)
+```
+
+```{r}
+butterflies_pest <- read_excel("butterflies_pesticides.xlsx")
+head(butterflies_pest, 6)
+```
+
+__Q1.__ __Normality test.<br>__
+```{r}
+shapiro.test(butterflies_pest$`Wing Length`)
+```
+The p-value is greater than 0.05, wich means the data is normaly distributed.<br>
+
+__Q2.__ __Equality of variance test.<br>__
+```{r}
+var.test(`Wing Length`~Group,
+         butterflies_pest)
+```
+The variance test yield F=0.40274 with 39 and 39 degrees of freedom and p=0.005512. Since the p-value is < 0.05, we reject the null hypothesis of equal variances, indicating that the groups have significantly difference variance.<br>
+
+__Q3.__ __Statistical test.<br>__
+```{r}
+t.test(filter(butterflies_pest, Group == "group1")$`Wing Length`,
+       filter(butterflies_pest, Group == "group2")$`Wing Length`,
+       alternative = 'two.side',
+       mu=0,
+       paired = F,
+       var.equal = F)
+```
+```{r}
+cohensD(`Wing Length` ~ Group, data=butterflies_pest)
+```
+After cloncluding our statistical tests, we were able to find that there is a significant differences between our groups due to the t-test reavealing a values of 3.98 and a p-value of 1.72x10^-4, and this difference being meaningfully large due to its effect size of 0.89066.<br>
+
+__Q4.__ __ggplot.<br>__
+```{r}
+ggplot(butterflies_pest, aes(x = Group,
+                             y = `Wing Length`)) +
+  geom_boxplot()
+```
+<br>The boxplot shows that the control group (group 1) has a higher median wing lengththan the pesticide exposed group (group 2).
+
+__Q5.__ __Summary paragraph.<br>__
+
+We investigated wether pesticide exposure during the larval stage affects butterfly development by comparing the wing lengths of treated butterflies (group 2) and untreated butterflies (group 1). Using Welch's two sample t-test, we analyze wing length meassurments from a total of 80 butterflies (40 per group). The results indicated a statistically significant difference between two groups (t~66~= 3.98, p= 1.72x10^-4^), with untreated butterflies exhibiting grater mean wing length (632.18) than pesticide treated butterflies (593.49). Aditionally, Cohen's D (0.89) indicated a large effects size, suggesting that the observed difference may also be biologically meaningful. These findings suggest that pesticide exposure during the larval stage may negatively affect butterfly development, resulting in reduce wing length.<br>
+
